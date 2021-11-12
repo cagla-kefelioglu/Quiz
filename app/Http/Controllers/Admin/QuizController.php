@@ -25,7 +25,7 @@ class QuizController extends Controller
      */
     public function create()
     {
-        return "deneme";
+        return view('admin.quiz.create');
     }
 
     /**
