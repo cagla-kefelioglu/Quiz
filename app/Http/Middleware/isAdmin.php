@@ -16,6 +16,7 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next)
     {
+        /** @noinspection PhpUndefinedFieldInspection */
         if(auth()->user()->type!=='admin'){
             return redirect()->route('dashboard');
         }
