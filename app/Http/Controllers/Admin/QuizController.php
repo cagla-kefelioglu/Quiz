@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\QuizCreateRequest;
 class QuizController extends Controller
 {
     /**
@@ -32,11 +32,12 @@ class QuizController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return array|\Illuminate\Http\Response|string
      */
-    public function store(Request $request)
+    public function store(QuizCreateRequest $request)
     {
-        //
+        Quiz::create($request->post());
+        return redirected()->route('quizzes.index')->withSuccess('Quiz başarıyla oluşturuldu');
     }
 
     /**
@@ -47,7 +48,7 @@ class QuizController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

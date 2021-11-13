@@ -38,6 +38,18 @@
             <!-- Page Content -->
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </div>
+                    @endif
+
+                    @if(session('success'))
+                        <i class="fa fa-check"></i>
+                        <div class="alert alert-success">{{session('success')}}</div>
+                    @endif
                     {{ $slot }}
                 </div>
             </div>
@@ -47,7 +59,9 @@
         </div>
 
         @stack('modals')
+        @isset($js)/*js varsa gelir.yoksa hata vermesini engeller*/
           {{$js}}
+        @endisset
         @livewireScripts
     </body>
 </html>
